@@ -13,16 +13,20 @@ public class DialogManager : MonoBehaviour
         DiaSightseeing,
         DiaEarthMoonSize,
         DiaEarthRot,
-        DiaEarthMarker
+        DiaEarthMarker,
+        DiaWrongMarker,
+        DiaCorrectMarker
     }
 
-    Dialogs logs;
+    public Dialogs logs;
 
     public SpawnEffect spawnEffect;
     public Text shownText;
     public GameObject dialogPanel;
     public GameObject planetButtons;
     public PlayableDirector director;
+    public GameObject markerCanvas;
+    public MarkerClick markerClick;
 
     bool isDialogDone;
     string[] dialog;
@@ -54,32 +58,36 @@ public class DialogManager : MonoBehaviour
                 case Dialogs.DiaSightseeing:
                     isDialogDone = false;
                     planetButtons.SetActive(true);
-                    dialogPanel.SetActive(false);
                     break;
                 case Dialogs.DiaEarthMoonSize:
                     isDialogDone = false;
-                    dialogPanel.SetActive(false);
                     director.Play();
                     break;
                 case Dialogs.DiaEarthRot:
                     isDialogDone = false;
-                    dialogPanel.SetActive(false);
                     director.Play();
                     break;
                 case Dialogs.DiaEarthMarker:
+                    markerCanvas.SetActive(true);
+                    break;
+                case Dialogs.DiaWrongMarker:
                     isDialogDone = false;
-                    dialogPanel.SetActive(false);
-
+                    markerClick.ResetMarker();
                     break;
             }
         }
+    }
+
+    public void Test(int number)
+    {
+
     }
 
     public IEnumerator DisplayDialog()
     {
         shownText.text = "";
         string currentText = "";
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.5f - 1.5f);
         dialogPanel.SetActive(true);
         switch (logs)
         {
@@ -116,6 +124,12 @@ public class DialogManager : MonoBehaviour
                     "지구자전 대사 (DiaEarthRot)"
                 };
                 break;
+            case Dialogs.DiaWrongMarker:
+                dialog = new string[]
+                {
+                    "지구마커 틀림 (DiaWrongMarker)"
+                };
+                break;
             case Dialogs.DiaEarthMarker:
                 dialog = new string[]
                 {
@@ -140,6 +154,8 @@ public class DialogManager : MonoBehaviour
                 }
                 else
                 {
+                    yield return new WaitForSeconds(1f - 1f);
+                    dialogPanel.SetActive(false);
                     isDialogDone = true;
                     StopAllCoroutines();
                 }
