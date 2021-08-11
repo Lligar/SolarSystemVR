@@ -69,7 +69,7 @@ public class DialogManager : MonoBehaviour
                 case Dialogs.DiaEarthMarker:
                     isDialogDone = false;
                     dialogPanel.SetActive(false);
-                    director.Play();
+
                     break;
             }
         }
@@ -79,7 +79,8 @@ public class DialogManager : MonoBehaviour
     {
         shownText.text = "";
         string currentText = "";
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(1.5f);
+        dialogPanel.SetActive(true);
         switch (logs)
         {
 
@@ -152,7 +153,6 @@ public class DialogManager : MonoBehaviour
         spawnEffect.enabled = true;
         dialogPanel.SetActive(false);
         yield return new WaitForSeconds(2f);
-        dialogPanel.SetActive(true);
         spawnEffect.enabled = false;
         StartCoroutine(DisplayDialog());
     }
@@ -162,21 +162,18 @@ public class DialogManager : MonoBehaviour
     }
     public void EarthMoonSignal()
     {
-        dialogPanel.SetActive(true);
         director.Pause();
         logs = Dialogs.DiaEarthMoonSize;
         StartCoroutine(DisplayDialog());
     }
     public void EarthRotSignal()
     {
-        dialogPanel.SetActive(true);
         director.Pause();
         logs = Dialogs.DiaEarthRot;
         StartCoroutine(DisplayDialog());
     }
     public void EarthMarkerSignal()
     {
-        dialogPanel.SetActive(true);
         director.Pause();
         logs = Dialogs.DiaEarthMarker;
         StartCoroutine(DisplayDialog());
