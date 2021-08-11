@@ -9,13 +9,26 @@ public class MarkerClick : MonoBehaviour
 
     public void GazeClick()
     {
-        transform.GetChild(0).gameObject.SetActive(true);
-        for (int i = 0; i < markerCanvas.transform.childCount; i++)
+        if (gameObject.name == "MarKor")
         {
-            markerCanvas.GetChild(i).GetComponent<BoxCollider>().enabled = false;
+            transform.GetChild(0).gameObject.SetActive(true);
+            for (int i = 0; i < markerCanvas.transform.childCount; i++)
+            {
+                markerCanvas.GetChild(i).GetComponent<BoxCollider>().enabled = false;
+            }
+            dialogManager.logs = DialogManager.Dialogs.DiaCorrectMarker;
+            dialogManager.StartCoroutine("DisplayDialog");
         }
-        dialogManager.logs = DialogManager.Dialogs.DiaWrongMarker;
-        dialogManager.StartCoroutine("DisplayDialog");
+        else
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+            for (int i = 0; i < markerCanvas.transform.childCount; i++)
+            {
+                markerCanvas.GetChild(i).GetComponent<BoxCollider>().enabled = false;
+            }
+            dialogManager.logs = DialogManager.Dialogs.DiaWrongMarker;
+            dialogManager.StartCoroutine("DisplayDialog");
+        }
     }
 
     public void ResetMarker()

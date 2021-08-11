@@ -27,6 +27,8 @@ public class DialogManager : MonoBehaviour
     public PlayableDirector director;
     public GameObject markerCanvas;
     public MarkerClick markerClick;
+    public GameObject earth;
+    public GameObject moon;
 
     bool isDialogDone;
     string[] dialog;
@@ -65,22 +67,22 @@ public class DialogManager : MonoBehaviour
                     break;
                 case Dialogs.DiaEarthRot:
                     isDialogDone = false;
-                    director.Play();
                     break;
                 case Dialogs.DiaEarthMarker:
                     markerCanvas.SetActive(true);
+                    isDialogDone = false;
                     break;
                 case Dialogs.DiaWrongMarker:
                     isDialogDone = false;
                     markerClick.ResetMarker();
                     break;
+                case Dialogs.DiaCorrectMarker:
+                    isDialogDone = false;
+                    markerCanvas.SetActive(false);
+                    director.Play();
+                    break;
             }
         }
-    }
-
-    public void Test(int number)
-    {
-
     }
 
     public IEnumerator DisplayDialog()
@@ -136,6 +138,12 @@ public class DialogManager : MonoBehaviour
                     "지구마커 대사 (DiaEarthRot)"
                 };
                 break;
+            case Dialogs.DiaCorrectMarker:
+                dialog = new string[]
+                {
+                    "지구마커 정답 (DiaCorrectMarker)"
+                };
+                break;
         }                        
 
         int j = 0;
@@ -154,7 +162,7 @@ public class DialogManager : MonoBehaviour
                 }
                 else
                 {
-                    yield return new WaitForSeconds(1f - 1f);
+                    yield return new WaitForSeconds(1f - 0f);
                     dialogPanel.SetActive(false);
                     isDialogDone = true;
                     StopAllCoroutines();
@@ -186,6 +194,8 @@ public class DialogManager : MonoBehaviour
     {
         director.Pause();
         logs = Dialogs.DiaEarthRot;
+        earth.GetComponent<ObjectRotation>().enabled = true;
+        moon.SetActive(false);
         StartCoroutine(DisplayDialog());
     }
     public void EarthMarkerSignal()

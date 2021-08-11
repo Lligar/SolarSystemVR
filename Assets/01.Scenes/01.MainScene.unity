@@ -232,7 +232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1845112579478550, guid: d29fc1c391e4f9c4fba23e72a0471c31, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4039803663107618, guid: d29fc1c391e4f9c4fba23e72a0471c31, type: 3}
       propertyPath: m_LocalPosition.x
@@ -388,9 +388,19 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114047054977268788, guid: d29fc1c391e4f9c4fba23e72a0471c31,
+        type: 3}
+      propertyPath: planetSpeedRotation
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114107304221981144, guid: d29fc1c391e4f9c4fba23e72a0471c31,
         type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114116557273336932, guid: d29fc1c391e4f9c4fba23e72a0471c31,
+        type: 3}
+      propertyPath: planetSpeedRotation
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 135244012096416406, guid: d29fc1c391e4f9c4fba23e72a0471c31,
@@ -765,17 +775,17 @@ PrefabInstance:
     - target: {fileID: 1388939536793634857, guid: f082734abb30ed24fb0549f7addadfa0,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1388939536793634857, guid: f082734abb30ed24fb0549f7addadfa0,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1388939536793634857, guid: f082734abb30ed24fb0549f7addadfa0,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1388939536793634857, guid: f082734abb30ed24fb0549f7addadfa0,
         type: 3}
@@ -817,6 +827,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf77a0cb84a3f564d9f053f7a78e5463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &311437658 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1770510009322924, guid: d29fc1c391e4f9c4fba23e72a0471c31,
+    type: 3}
+  m_PrefabInstance: {fileID: 40933793}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &339689450
 GameObject:
   m_ObjectHideFlags: 0
@@ -921,6 +937,8 @@ MonoBehaviour:
   director: {fileID: 1244373400}
   markerCanvas: {fileID: 1499788895}
   markerClick: {fileID: 186398678}
+  earth: {fileID: 2034689923}
+  moon: {fileID: 311437658}
 --- !u!4 &372845178
 Transform:
   m_ObjectHideFlags: 0
@@ -1021,7 +1039,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 383729579}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.07, z: -0.63}
+  m_LocalPosition: {x: 0, y: 0, z: -13.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2336,11 +2354,11 @@ MonoBehaviour:
   m_Waypoints:
   - position: {x: 0, y: 0, z: 0}
     roll: 0
-  - position: {x: 1.4525867, y: 0, z: 0.33708513}
+  - position: {x: 1.6092843, y: 0, z: 0.227736}
     roll: 0
   - position: {x: 2, y: 0.5, z: 1.5}
     roll: 0
-  - position: {x: 3, y: 0.22869217, z: 2.9489145}
+  - position: {x: 2.527274, y: 0.44690704, z: 1.7786824}
     roll: 0
 --- !u!4 &993565907
 Transform:
@@ -3149,7 +3167,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1499788896
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3726,3 +3744,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   director: {fileID: 1244373400}
+--- !u!1 &2034689923 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1630155751259304, guid: d29fc1c391e4f9c4fba23e72a0471c31,
+    type: 3}
+  m_PrefabInstance: {fileID: 40933793}
+  m_PrefabAsset: {fileID: 0}
