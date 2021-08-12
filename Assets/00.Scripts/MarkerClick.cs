@@ -35,6 +35,7 @@ public class MarkerClick : MonoBehaviour
     {
         for (int i = 0;i < markerCanvas.transform.childCount;i++)
         {
+            print("marker");
             markerCanvas.GetChild(i).GetComponent<BoxCollider>().enabled = true;
             markerCanvas.GetChild(i).transform.GetChild(0).gameObject.SetActive(false);
         }

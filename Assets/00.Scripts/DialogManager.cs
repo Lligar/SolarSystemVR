@@ -29,6 +29,7 @@ public class DialogManager : MonoBehaviour
     public MarkerClick markerClick;
     public GameObject earth;
     public GameObject moon;
+    public GameObject backtoPlanets;
 
     bool isDialogDone;
     string[] dialog;
@@ -67,6 +68,7 @@ public class DialogManager : MonoBehaviour
                     break;
                 case Dialogs.DiaEarthRot:
                     isDialogDone = false;
+                    backtoPlanets.SetActive(true);
                     break;
                 case Dialogs.DiaEarthMarker:
                     markerCanvas.SetActive(true);

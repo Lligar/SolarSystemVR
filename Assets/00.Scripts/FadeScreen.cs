@@ -8,6 +8,8 @@ public class FadeScreen : MonoBehaviour
 {
     public Image fadeImage;
     public Renderer reticlePointer;
+    public ResetManager resetManager;
+    public GameObject backToPlanetButton;
 
     float fadeAlpha;
     bool buttonClicked;
@@ -18,10 +20,17 @@ public class FadeScreen : MonoBehaviour
         buttonClicked = true;
     }
 
-    IEnumerator FadeAction()
+    void FadeAction()
     {
-        yield return new WaitForSeconds(0f);
-        SceneManager.LoadScene(1);
+        if(gameObject.tag == "StartButton")
+        {
+            SceneManager.LoadScene(1);
+        }
+        if(gameObject.tag == "BackToPlanets")
+        {
+            resetManager.ResetObjects();
+        }
+
     }
 
     void Update()
@@ -35,7 +44,7 @@ public class FadeScreen : MonoBehaviour
                 reticlePointer.material.color = new Vector4 (255f, 255f, 255f, 1f - fadeAlpha);
                 if(fadeAlpha >= 1.5f)
                 {
-                    StartCoroutine("FadeAction");
+                    FadeAction();
                     fadeOut = true;
                 }
             }
