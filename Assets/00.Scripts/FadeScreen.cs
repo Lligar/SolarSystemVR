@@ -9,10 +9,9 @@ public class FadeScreen : MonoBehaviour
     public Image fadeImage;
     public Renderer reticlePointer;
     public ResetManager resetManager;
-    public GameObject backToPlanetButton;
+    public bool buttonClicked;
 
     float fadeAlpha;
-    bool buttonClicked;
     bool fadeOut;
 
     void GazeClick()

@@ -530,6 +530,53 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogManager: {fileID: 372845177}
   markerCanvas: {fileID: 1499788896}
+--- !u!1 &188028033
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 188028035}
+  - component: {fileID: 188028034}
+  m_Layer: 0
+  m_Name: FadeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &188028034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188028033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 825440910559e3e47a16e9f950b01b17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeImage: {fileID: 273122788}
+  reticlePointer: {fileID: 273122787}
+  resetManager: {fileID: 1386138025}
+  buttonClicked: 0
+--- !u!4 &188028035
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188028033}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &230410370
 GameObject:
   m_ObjectHideFlags: 0
@@ -832,6 +879,11 @@ PrefabInstance:
         type: 3}
       propertyPath: near clip plane
       value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388939536835107908, guid: f082734abb30ed24fb0549f7addadfa0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 1388939536835107911, guid: f082734abb30ed24fb0549f7addadfa0,
         type: 3}
@@ -1200,7 +1252,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &471940283
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1208,14 +1260,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 471940282}
-  m_LocalRotation: {x: 0.16378802, y: -0.0000000012297717, z: 4.715769e-10, w: 0.98649555}
-  m_LocalPosition: {x: 0, y: 0, z: 120.24}
-  m_LocalScale: {x: 0.14811002, y: 0.1193738, z: 0.16646183}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 135.4}
+  m_LocalScale: {x: 0.17780608, y: 0.14330825, z: 0.19983742}
   m_Children:
   - {fileID: 701744859}
   m_Father: {fileID: 717204856}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 18.854, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0.40000153, y: -19.36}
@@ -1267,12 +1319,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 471940282}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 825440910559e3e47a16e9f950b01b17, type: 3}
+  m_Script: {fileID: 11500000, guid: d40abcd707c31db409582a394c9164fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeImage: {fileID: 273122788}
-  reticlePointer: {fileID: 273122787}
-  resetManager: {fileID: 1386138025}
+  fadeManager: {fileID: 188028033}
 --- !u!65 &471940287
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1813,7 +1863,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &627244706
 RectTransform:
   m_ObjectHideFlags: 0
