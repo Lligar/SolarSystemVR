@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 
-public class ResetManager : MonoBehaviour
+public class TestScript : MonoBehaviour
 {
     public InitialPosRot[] initObjects;
     public ObjectRotation earthRot;
     public PlayableDirector director;
     public GameObject mainCamera;
-    public void ResetObjects()
+    public void tester()
     {
         mainCamera.transform.position = new Vector3(0, 0, 0);
         mainCamera.transform.rotation = new Quaternion(0, 0, 0, 0);
@@ -25,5 +25,4 @@ public class ResetManager : MonoBehaviour
             director.Play();
         }
     }
-
 }
