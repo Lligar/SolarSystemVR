@@ -15,7 +15,8 @@ public class DialogManager : MonoBehaviour
         DiaEarthRot,
         DiaEarthMarker,
         DiaWrongMarker,
-        DiaCorrectMarker
+        DiaCorrectMarker,
+        DiaMoonStart
     }
 
     public Dialogs logs;
@@ -83,6 +84,11 @@ public class DialogManager : MonoBehaviour
                     markerCanvas.SetActive(false);
                     director.Play();
                     break;
+                case Dialogs.DiaMoonStart:
+                    isDialogDone = false;
+                    markerCanvas.SetActive(false);
+                    director.Play();
+                    break;
             }
         }
     }
@@ -146,6 +152,12 @@ public class DialogManager : MonoBehaviour
                     "지구마커 정답 (DiaCorrectMarker)"
                 };
                 break;
+            case Dialogs.DiaMoonStart:
+                dialog = new string[]
+                {
+                    "달 시작 대사 (DiaMoonStart)"
+                };
+                break;
         }                        
 
         int j = 0;
@@ -204,6 +216,12 @@ public class DialogManager : MonoBehaviour
     {
         director.Pause();
         logs = Dialogs.DiaEarthMarker;
+        StartCoroutine(DisplayDialog());
+    }
+    public void MoonRotSignal()
+    {
+        director.Pause();
+        logs = Dialogs.DiaMoonStart;
         StartCoroutine(DisplayDialog());
     }
 }
