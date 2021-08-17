@@ -19,7 +19,7 @@ public class RevealNightEarthTexture : MonoBehaviour {
 	
 		if(tfLight)
 		{
-            tfLight.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 8.3f);
+            //tfLight.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 8.3f);
 			GetComponent<Renderer>().material.SetVector("_LightPos", tfLight.position);
 			GetComponent<Renderer>().material.SetVector("_LightDir", tfLight.forward);
 		}
