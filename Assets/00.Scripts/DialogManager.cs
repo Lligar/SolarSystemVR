@@ -11,12 +11,21 @@ public class DialogManager : MonoBehaviour
         DiaStart, 
         DiaWarp,
         DiaSightseeing,
+
         DiaEarthMoonSize,
         DiaEarthRot,
         DiaEarthMarker,
         DiaWrongMarker,
         DiaCorrectMarker,
-        DiaMoonStart
+
+        DiaMoonStart,
+        DiaMoonRot,
+        DiaMoonFirst,
+        DiaMoonSecond,
+        DiaMoonThird,
+        DiaMoonFourth,
+        DiaMoonFifth
+
     }
 
     public Dialogs logs;
@@ -85,6 +94,36 @@ public class DialogManager : MonoBehaviour
                     director.Play();
                     break;
                 case Dialogs.DiaMoonStart:
+                    isDialogDone = false;
+                    markerCanvas.SetActive(false);
+                    director.Play();
+                    break;
+                case Dialogs.DiaMoonRot:
+                    isDialogDone = false;
+                    markerCanvas.SetActive(false);
+                    director.Play();
+                    break;
+                case Dialogs.DiaMoonFirst:
+                    isDialogDone = false;
+                    markerCanvas.SetActive(false);
+                    director.Play();
+                    break;
+                case Dialogs.DiaMoonSecond:
+                    isDialogDone = false;
+                    markerCanvas.SetActive(false);
+                    director.Play();
+                    break;
+                case Dialogs.DiaMoonThird:
+                    isDialogDone = false;
+                    markerCanvas.SetActive(false);
+                    director.Play();
+                    break;
+                case Dialogs.DiaMoonFourth:
+                    isDialogDone = false;
+                    markerCanvas.SetActive(false);
+                    director.Play();
+                    break;
+                case Dialogs.DiaMoonFifth:
                     isDialogDone = false;
                     markerCanvas.SetActive(false);
                     director.Play();
@@ -158,6 +197,42 @@ public class DialogManager : MonoBehaviour
                     "달 시작 대사 (DiaMoonStart)"
                 };
                 break;
+            case Dialogs.DiaMoonRot:
+                dialog = new string[]
+                {
+                    "달 회전 후 대사 (DiaMoonStart)"
+                };
+                break;
+            case Dialogs.DiaMoonFirst:
+                dialog = new string[]
+                {
+                    "초승달 대사 (DiaMoonFirst)"
+                };
+                break;
+            case Dialogs.DiaMoonSecond:
+                dialog = new string[]
+                {
+                    "상현달 대사 (DiaMoonSecond)"
+                };
+                break;
+            case Dialogs.DiaMoonThird:
+                dialog = new string[]
+                {
+                    "보름달 대사 (DiaMoonThird)"
+                };
+                break;
+            case Dialogs.DiaMoonFourth:
+                dialog = new string[]
+                {
+                    "하현달 대사 (DiaMoonFourth)"
+                };
+                break;
+            case Dialogs.DiaMoonFifth:
+                dialog = new string[]
+                {
+                    "그믐달 대사 (DiaMoonFifth)"
+                };
+                break;
         }                        
 
         int j = 0;
@@ -176,7 +251,7 @@ public class DialogManager : MonoBehaviour
                 }
                 else
                 {
-                    yield return new WaitForSeconds(1f - 0f);
+                    yield return new WaitForSeconds(1f - 0.5f);
                     dialogPanel.SetActive(false);
                     isDialogDone = true;
                     StopAllCoroutines();
@@ -218,10 +293,46 @@ public class DialogManager : MonoBehaviour
         logs = Dialogs.DiaEarthMarker;
         StartCoroutine(DisplayDialog());
     }
-    public void MoonRotSignal()
+    public void MoonStartSignal()
     {
         director.Pause();
         logs = Dialogs.DiaMoonStart;
+        StartCoroutine(DisplayDialog());
+    }
+    public void MoonRotSignal()
+    {
+        director.Pause();
+        logs = Dialogs.DiaMoonRot;
+        StartCoroutine(DisplayDialog());
+    }
+    public void MoonFirstSignal()
+    {
+        director.Pause();
+        logs = Dialogs.DiaMoonFirst;
+        StartCoroutine(DisplayDialog());
+    }
+    public void MoonSecondSignal()
+    {
+        director.Pause();
+        logs = Dialogs.DiaMoonSecond;
+        StartCoroutine(DisplayDialog());
+    }
+    public void MoonThirdSignal()
+    {
+        director.Pause();
+        logs = Dialogs.DiaMoonThird;
+        StartCoroutine(DisplayDialog());
+    }
+    public void MoonFourthSignal()
+    {
+        director.Pause();
+        logs = Dialogs.DiaMoonFourth;
+        StartCoroutine(DisplayDialog());
+    }
+    public void MoonFifthSignal()
+    {
+        director.Pause();
+        logs = Dialogs.DiaMoonFifth;
         StartCoroutine(DisplayDialog());
     }
 }

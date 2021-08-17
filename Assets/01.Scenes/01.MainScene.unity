@@ -2597,7 +2597,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 812728248}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 3.679}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3955,6 +3955,12 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 3714c4a1219714a4282659a1e88bcbac, type: 2}
     - {fileID: 11400000, guid: a67e8ca4f4db13846b899b767579b994, type: 2}
     - {fileID: 11400000, guid: a7ac415e1e9754f43ab51e97f79659e2, type: 2}
+    - {fileID: 11400000, guid: f95725c309322fc4197f519d9544c4ed, type: 2}
+    - {fileID: 11400000, guid: 58e0498d0424d554884876effd5ecc02, type: 2}
+    - {fileID: 11400000, guid: 7362a9aac985d1443a5cbec76794614a, type: 2}
+    - {fileID: 11400000, guid: fe5c7f9707b867b448588e09da608411, type: 2}
+    - {fileID: 11400000, guid: a4bc26969d02b55489d57ebbf4c17f59, type: 2}
+    - {fileID: 11400000, guid: 0031e30d6a180d840b727bbf0557d1db, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -3998,7 +4004,85 @@ MonoBehaviour:
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 372845177}
+          m_MethodName: MoonStartSignal
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 372845177}
           m_MethodName: MoonRotSignal
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 372845177}
+          m_MethodName: MoonFirstSignal
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 372845177}
+          m_MethodName: MoonSecondSignal
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 372845177}
+          m_MethodName: MoonFourthSignal
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 372845177}
+          m_MethodName: MoonFourthSignal
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 372845177}
+          m_MethodName: MoonFifthSignal
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
