@@ -714,7 +714,7 @@ PrefabInstance:
     - target: {fileID: 1388939536835107908, guid: f082734abb30ed24fb0549f7addadfa0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -50
+      value: -200
       objectReference: {fileID: 0}
     - target: {fileID: 1388939536835107911, guid: f082734abb30ed24fb0549f7addadfa0,
         type: 3}
@@ -1086,7 +1086,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 471940282}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 135.4}
+  m_LocalPosition: {x: 0, y: 0, z: 110}
   m_LocalScale: {x: 0.17780608, y: 0.14330825, z: 0.19983742}
   m_Children:
   - {fileID: 701744859}
@@ -2461,7 +2461,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &748941977
 Transform:
   m_ObjectHideFlags: 0
@@ -2583,6 +2583,7 @@ GameObject:
   m_Component:
   - component: {fileID: 812728249}
   - component: {fileID: 812728250}
+  - component: {fileID: 812728251}
   m_Layer: 0
   m_Name: LightRig
   m_TagString: Untagged
@@ -2624,6 +2625,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &812728251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812728248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b33109a46b2d210438d479c3e132c058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &919824008
 GameObject:
   m_ObjectHideFlags: 0
@@ -3733,9 +3746,11 @@ MonoBehaviour:
   initObjects:
   - {fileID: 2034689927}
   - {fileID: 311437666}
-  earthRot: {fileID: 114047054948984213}
+  - {fileID: 812728251}
+  earthRotScript: {fileID: 114047054948984213}
   director: {fileID: 1244373400}
   mainCamera: {fileID: 1827354869}
+  backToPlanet: {fileID: 471940282}
 --- !u!4 &1386138026
 Transform:
   m_ObjectHideFlags: 0
@@ -3961,6 +3976,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: fe5c7f9707b867b448588e09da608411, type: 2}
     - {fileID: 11400000, guid: a4bc26969d02b55489d57ebbf4c17f59, type: 2}
     - {fileID: 11400000, guid: 0031e30d6a180d840b727bbf0557d1db, type: 2}
+    - {fileID: 11400000, guid: 602d06e2b66c5ee47b4760ccf3b8c219, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -4056,7 +4072,7 @@ MonoBehaviour:
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 372845177}
-          m_MethodName: MoonFourthSignal
+          m_MethodName: MoonThirdSignal
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -4083,6 +4099,19 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 372845177}
           m_MethodName: MoonFifthSignal
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 372845177}
+          m_MethodName: MoonLastSignal
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

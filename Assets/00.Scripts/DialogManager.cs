@@ -24,8 +24,8 @@ public class DialogManager : MonoBehaviour
         DiaMoonSecond,
         DiaMoonThird,
         DiaMoonFourth,
-        DiaMoonFifth
-
+        DiaMoonFifth,
+        DiaMoonLast
     }
 
     public Dialogs logs;
@@ -43,7 +43,6 @@ public class DialogManager : MonoBehaviour
 
     bool isDialogDone;
     string[] dialog;
-
 
     void Start()
     {
@@ -95,38 +94,35 @@ public class DialogManager : MonoBehaviour
                     break;
                 case Dialogs.DiaMoonStart:
                     isDialogDone = false;
-                    markerCanvas.SetActive(false);
                     director.Play();
                     break;
                 case Dialogs.DiaMoonRot:
                     isDialogDone = false;
-                    markerCanvas.SetActive(false);
                     director.Play();
                     break;
                 case Dialogs.DiaMoonFirst:
                     isDialogDone = false;
-                    markerCanvas.SetActive(false);
                     director.Play();
                     break;
                 case Dialogs.DiaMoonSecond:
                     isDialogDone = false;
-                    markerCanvas.SetActive(false);
                     director.Play();
                     break;
                 case Dialogs.DiaMoonThird:
                     isDialogDone = false;
-                    markerCanvas.SetActive(false);
                     director.Play();
                     break;
                 case Dialogs.DiaMoonFourth:
                     isDialogDone = false;
-                    markerCanvas.SetActive(false);
                     director.Play();
                     break;
                 case Dialogs.DiaMoonFifth:
                     isDialogDone = false;
-                    markerCanvas.SetActive(false);
                     director.Play();
+                    break;
+                case Dialogs.DiaMoonLast:
+                    isDialogDone = false;
+                    backtoPlanets.SetActive(true);
                     break;
             }
         }
@@ -233,6 +229,12 @@ public class DialogManager : MonoBehaviour
                     "그믐달 대사 (DiaMoonFifth)"
                 };
                 break;
+            case Dialogs.DiaMoonLast:
+                dialog = new string[]
+                {
+                    "달 마지막 대사 (DiaMoonLast)"
+                };
+                break;
         }                        
 
         int j = 0;
@@ -269,6 +271,7 @@ public class DialogManager : MonoBehaviour
         spawnEffect.enabled = false;
         StartCoroutine(DisplayDialog());
     }
+
     void Director_Played(PlayableDirector obj)
     {
         planetButtons.SetActive(false);
@@ -333,6 +336,12 @@ public class DialogManager : MonoBehaviour
     {
         director.Pause();
         logs = Dialogs.DiaMoonFifth;
+        StartCoroutine(DisplayDialog());
+    }
+    public void MoonLastSignal()
+    {
+        director.Pause();
+        logs = Dialogs.DiaMoonLast;
         StartCoroutine(DisplayDialog());
     }
 }
