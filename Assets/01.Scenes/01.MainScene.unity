@@ -394,6 +394,7 @@ MonoBehaviour:
   reticlePointer: {fileID: 273122787}
   resetManager: {fileID: 1386138025}
   buttonClicked: 0
+  earthCollider: {fileID: 135244012070236983}
 --- !u!4 &188028035
 Transform:
   m_ObjectHideFlags: 0

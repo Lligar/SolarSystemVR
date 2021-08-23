@@ -299,6 +299,7 @@ public class DialogManager : MonoBehaviour
     public void MoonStartSignal()
     {
         director.Pause();
+        earth.GetComponent<SphereCollider>().enabled = true;
         logs = Dialogs.DiaMoonStart;
         StartCoroutine(DisplayDialog());
     }

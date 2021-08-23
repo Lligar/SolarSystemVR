@@ -10,6 +10,7 @@ public class FadeScreen : MonoBehaviour
     public Renderer reticlePointer;
     public ResetManager resetManager;
     public bool buttonClicked;
+    public SphereCollider earthCollider;
 
     float fadeAlpha;
     bool fadeOut;
@@ -28,8 +29,11 @@ public class FadeScreen : MonoBehaviour
         if(gameObject.tag == "BackToPlanets")
         {
             resetManager.ResetObjects();
+            if(earthCollider)
+            {
+                earthCollider.enabled = false;
+            }    
         }
-
     }
 
     void Update()
