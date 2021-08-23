@@ -10,6 +10,8 @@ public class ResetManager : MonoBehaviour
     public PlayableDirector director;
     public GameObject mainCamera;
     public GameObject backToPlanet;
+    public GameObject planetSelection;
+
     public void ResetObjects()
     {
         mainCamera.transform.position = new Vector3(0, 0, 0);
@@ -27,7 +29,8 @@ public class ResetManager : MonoBehaviour
                 initObjects[i].gameObject.SetActive(true);
             }
             initObjects[i].ResetPosRot();
-            backToPlanet.SetActive(true);
+            backToPlanet.SetActive(false);
+            planetSelection.SetActive(true);
             director.Play();
         }
     }

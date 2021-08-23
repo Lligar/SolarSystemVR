@@ -2461,7 +2461,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &748941977
 Transform:
   m_ObjectHideFlags: 0
@@ -3751,6 +3751,7 @@ MonoBehaviour:
   director: {fileID: 1244373400}
   mainCamera: {fileID: 1827354869}
   backToPlanet: {fileID: 471940282}
+  planetSelection: {fileID: 748941976}
 --- !u!4 &1386138026
 Transform:
   m_ObjectHideFlags: 0
