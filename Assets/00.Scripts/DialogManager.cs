@@ -31,7 +31,6 @@ public class DialogManager : MonoBehaviour
         DiaOrbitStart,
         DiaOrbitZoom,
         Dia
-
     }
 
     public Dialogs logs;
