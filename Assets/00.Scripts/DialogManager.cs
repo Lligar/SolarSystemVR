@@ -25,7 +25,13 @@ public class DialogManager : MonoBehaviour
         DiaMoonThird,
         DiaMoonFourth,
         DiaMoonFifth,
-        DiaMoonLast
+        DiaMoonLast,
+
+        DiaSunStart,
+        DiaOrbitStart,
+        DiaOrbitZoom,
+        Dia
+
     }
 
     public Dialogs logs;
@@ -40,6 +46,8 @@ public class DialogManager : MonoBehaviour
     public GameObject earth;
     public GameObject moon;
     public GameObject backtoPlanets;
+    public GameObject fadeScreen;
+    public ArrangePlanets arrangePlanets;
 
     bool isDialogDone;
     string[] dialog;
@@ -89,6 +97,8 @@ public class DialogManager : MonoBehaviour
                     break;
                 case Dialogs.DiaCorrectMarker:
                     isDialogDone = false;
+                    markerClick.ResetMarker();
+                    markerCanvas.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
                     markerCanvas.SetActive(false);
                     director.Play();
                     break;
@@ -123,6 +133,22 @@ public class DialogManager : MonoBehaviour
                 case Dialogs.DiaMoonLast:
                     isDialogDone = false;
                     backtoPlanets.SetActive(true);
+                    break;
+                case Dialogs.DiaSunStart:
+                    isDialogDone = false;
+                    fadeScreen.GetComponent<FadeScreen>().buttonClicked = true;
+                    fadeScreen.tag = "SolarSystemFade";
+                    break;
+                case Dialogs.DiaOrbitStart:
+                    isDialogDone = false;
+                    arrangePlanets.StartArrage();
+                    director.Play();
+                    break;
+                case Dialogs.DiaOrbitZoom:
+                    isDialogDone = false;
+                    print("here!");
+                    fadeScreen.GetComponent<FadeScreen>().buttonClicked = true;
+                    fadeScreen.tag = "SolarSystemDone";
                     break;
             }
         }
@@ -235,6 +261,24 @@ public class DialogManager : MonoBehaviour
                     "달 마지막 대사 (DiaMoonLast)"
                 };
                 break;
+            case Dialogs.DiaSunStart:
+                dialog = new string[]
+                {
+                    "태양 시작 대사 (DiaSunStart)"
+                };
+                break;
+            case Dialogs.DiaOrbitStart:
+                dialog = new string[]
+                {
+                    "태양계 관찰 대사 (DiaOrbitStart)"
+                };
+                break;
+            case Dialogs.DiaOrbitZoom:
+                dialog = new string[]
+                {
+                    "태양계 줌인 대사 (DiaOrbitZoom) + 태양계 행성들 설명 대사"
+                };
+                break;
         }                        
 
         int j = 0;
@@ -245,7 +289,7 @@ public class DialogManager : MonoBehaviour
             if (i == dialog[j].Length)
             {
 
-                yield return new WaitForSeconds(0.05f);
+                yield return new WaitForSeconds(0.01f);
                 if (dialog.Length > j+1)
                 {
                     j += 1;
@@ -253,7 +297,7 @@ public class DialogManager : MonoBehaviour
                 }
                 else
                 {
-                    yield return new WaitForSeconds(1f - 0.5f);
+                    yield return new WaitForSeconds(1f - 0.9f);
                     dialogPanel.SetActive(false);
                     isDialogDone = true;
                     StopAllCoroutines();
@@ -343,6 +387,24 @@ public class DialogManager : MonoBehaviour
     {
         director.Pause();
         logs = Dialogs.DiaMoonLast;
+        StartCoroutine(DisplayDialog());
+    }
+    public void SunStartSignal()
+    {
+        director.Pause();
+        logs = Dialogs.DiaSunStart;
+        StartCoroutine(DisplayDialog());
+    }
+    public void SolarSystemSig()
+    {
+        director.Pause();
+        logs = Dialogs.DiaOrbitStart;
+        StartCoroutine(DisplayDialog());
+    }
+    public void SunOrbitSignal()
+    {
+        director.Pause();
+        logs = Dialogs.DiaOrbitZoom;
         StartCoroutine(DisplayDialog());
     }
 }

@@ -16,5 +16,10 @@ public class InitialPosRot : MonoBehaviour
     {
         gameObject.transform.position = initPos;
         gameObject.transform.rotation = initRot;
+        if (gameObject.name == "LightRig")
+        {
+            transform.GetChild(0).gameObject.SetActive(false);
+            transform.GetChild(1).gameObject.SetActive(true);
+        }
     }
 }

@@ -9,6 +9,9 @@ TagManager:
   - Satellite
   - StartButton
   - BackToPlanets
+  - Orbit
+  - SolarSystemFade
+  - SolarSystemDone
   layers:
   - Default
   - TransparentFX

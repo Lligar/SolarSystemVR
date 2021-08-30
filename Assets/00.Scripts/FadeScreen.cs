@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Playables;
 
 public class FadeScreen : MonoBehaviour
 {
@@ -11,6 +12,11 @@ public class FadeScreen : MonoBehaviour
     public ResetManager resetManager;
     public bool buttonClicked;
     public SphereCollider earthCollider;
+    public GameObject planetButtons;
+
+    public GameObject[] nonSolarSystem;
+    public GameObject solarSystem;
+    public PlayableDirector director;
 
     float fadeAlpha;
     bool fadeOut;
@@ -34,6 +40,29 @@ public class FadeScreen : MonoBehaviour
                 earthCollider.enabled = false;
             }    
         }
+        if(gameObject.tag == "SolarSystemFade")
+        {
+            // 태양계외 객체 꺼
+            foreach(GameObject objects in nonSolarSystem)
+            {
+                objects.SetActive(false);
+            }
+            // 태양계 객체 켜
+            solarSystem.SetActive(true);
+            // Director.Play 로 카메라 조정 해
+            director.Play();
+        }
+        if (gameObject.tag == "SolarSystemDone")
+        {
+            foreach (GameObject objects in nonSolarSystem)
+            {
+                objects.SetActive(true);
+            }
+            director.Play();
+            planetButtons.SetActive(true);
+            solarSystem.SetActive(false);
+        }
+
     }
 
     void Update()

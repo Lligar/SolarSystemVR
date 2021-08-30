@@ -17,22 +17,19 @@ public class ResetManager : MonoBehaviour
         mainCamera.transform.position = new Vector3(0, 0, 0);
         mainCamera.transform.rotation = new Quaternion(0, 0, 0, 0);
         
-        if (earthRotScript.enabled)
-        {
-            earthRotScript.enabled = false;
-        }
-
         for (int i = 0; i < initObjects.Length; i++)
         {
-            if (!initObjects[i].gameObject.activeInHierarchy)
-            {
-                initObjects[i].gameObject.SetActive(true);
-            }
+            print(initObjects[i]);
+            initObjects[i].gameObject.SetActive(true);
             initObjects[i].ResetPosRot();
             backToPlanet.SetActive(false);
             planetSelection.SetActive(true);
             director.Play();
         }
-    }
 
+        if (earthRotScript.enabled)
+        {
+            earthRotScript.enabled = false;
+        }
+    }
 }
