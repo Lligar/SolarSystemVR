@@ -157,7 +157,7 @@ public class DialogManager : MonoBehaviour
     {
         shownText.text = "";
         string currentText = "";
-        yield return new WaitForSeconds(1.5f - 1.5f);
+        yield return new WaitForSeconds(1.5f);
         dialogPanel.SetActive(true);
         switch (logs)
         {
@@ -288,7 +288,7 @@ public class DialogManager : MonoBehaviour
             if (i == dialog[j].Length)
             {
 
-                yield return new WaitForSeconds(0.01f);
+                yield return new WaitForSeconds(0.25f);
                 if (dialog.Length > j+1)
                 {
                     j += 1;
@@ -296,13 +296,13 @@ public class DialogManager : MonoBehaviour
                 }
                 else
                 {
-                    yield return new WaitForSeconds(1f - 0.9f);
+                    yield return new WaitForSeconds(2f - 0f);
                     dialogPanel.SetActive(false);
                     isDialogDone = true;
                     StopAllCoroutines();
                 }
             }
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 
