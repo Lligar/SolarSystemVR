@@ -157,7 +157,7 @@ public class DialogManager : MonoBehaviour
     {
         shownText.text = "";
         string currentText = "";
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         dialogPanel.SetActive(true);
         switch (logs)
         {
@@ -302,7 +302,7 @@ public class DialogManager : MonoBehaviour
                     StopAllCoroutines();
                 }
             }
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.005f);
         }
     }
 
@@ -310,7 +310,7 @@ public class DialogManager : MonoBehaviour
     {
         spawnEffect.enabled = true;
         dialogPanel.SetActive(false);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
         spawnEffect.enabled = false;
         StartCoroutine(DisplayDialog());
     }
