@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class StartFade : MonoBehaviour
 {
     public Image fadeImage;
+    public DialogManager diaManager;
     float fadeAlpha = 1f;
 
     private void Start()
@@ -21,7 +22,11 @@ public class StartFade : MonoBehaviour
         {
             fadeAlpha -= 0.5f * Time.deltaTime;
             fadeImage.color = new Vector4(0f, 0f, 0f, fadeAlpha);
-            yield return new WaitForSeconds(Time.deltaTime);
+            yield return null;
+            if(fadeImage.color.a <= 0f)
+            {
+                diaManager.enabled = true;
+            }
         }
     }
 }

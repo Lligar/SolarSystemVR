@@ -35,7 +35,6 @@ public class DialogManager : MonoBehaviour
 
     public Dialogs logs;
 
-    public SpawnEffect spawnEffect;
     public Text shownText;
     public GameObject dialogPanel;
     public GameObject planetButtons;
@@ -44,12 +43,17 @@ public class DialogManager : MonoBehaviour
     public MarkerClick markerClick;
     public GameObject earth;
     public GameObject moon;
+    public GameObject sun;
     public GameObject backtoPlanets;
     public GameObject fadeScreen;
+    public GameObject ship;
+    public GameObject earthBackground;
     public ArrangePlanets arrangePlanets;
+    public SpawnEffect[] respawns;
 
     bool isDialogDone;
     string[] dialog;
+    float fadeFloat;
 
     void Start()
     {
@@ -67,7 +71,8 @@ public class DialogManager : MonoBehaviour
                 case Dialogs.DiaStart:
                     isDialogDone = false;
                     logs = Dialogs.DiaWarp;
-                    StartCoroutine(DisplayDialog());
+                    ship.GetComponent<MoveShip>().enabled = true;
+                    ship.GetComponent<ShakeShip>().enabled = true;
                     break;
                 case Dialogs.DiaWarp:
                     isDialogDone = false;
@@ -145,7 +150,6 @@ public class DialogManager : MonoBehaviour
                     break;
                 case Dialogs.DiaOrbitZoom:
                     isDialogDone = false;
-                    print("here!");
                     fadeScreen.GetComponent<FadeScreen>().buttonClicked = true;
                     fadeScreen.tag = "SolarSystemDone";
                     break;
@@ -288,7 +292,7 @@ public class DialogManager : MonoBehaviour
             if (i == dialog[j].Length)
             {
 
-                yield return new WaitForSeconds(0.025f);
+                yield return new WaitForSeconds(0.1f);
                 if (dialog.Length > j+1)
                 {
                     j += 1;
@@ -308,11 +312,46 @@ public class DialogManager : MonoBehaviour
 
     IEnumerator sightseeingMode()
     {
-        spawnEffect.enabled = true;
+        Color glassRenderer;
+        GameObject glassObject;
+
+        glassObject = ship.transform.Find("Glass").gameObject;
+        glassRenderer = ship.transform.Find("Glass").GetComponent<MeshRenderer>().material.color;
+
+        for (int i = 0; i < respawns.Length; i++)
+        {
+            respawns[i].enabled = true;
+        }
         dialogPanel.SetActive(false);
+
+        while(glassRenderer.a > 0f)
+        {
+            fadeFloat -= 0.005f;
+            glassRenderer = new Vector4(0f, 0f, 0f, fadeFloat);
+            if(glassRenderer.a <= 0f)
+            {
+                glassObject.SetActive(false);
+            }
+            yield return null;
+        }
         yield return new WaitForSeconds(4f);
-        spawnEffect.enabled = false;
+        for (int i = 0; i < respawns.Length; i++)
+        {
+            respawns[i].enabled = false;
+        }
         StartCoroutine(DisplayDialog());
+    }
+
+    IEnumerator ArriveSpace()
+    {
+        ship.GetComponent<MoveShip>().enabled = false;
+        ship.GetComponent<ShakeShip>().enabled = false;
+        sun.SetActive(true);
+        earth.SetActive(true);
+        earthBackground.SetActive(false);
+
+        yield return new WaitForSeconds(5f);
+        StartCoroutine("DisplayDialog");
     }
 
     void Director_Played(PlayableDirector obj)

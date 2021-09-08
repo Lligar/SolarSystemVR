@@ -23,7 +23,7 @@ public class ShakeShip : MonoBehaviour
         float counter = 0f;
 
         //Shake Speed
-        const float speed = 0.15f;
+        const float speed = 0.01f;
 
         //Angle Rotation(Optional)
         const float angleRot = 0;
