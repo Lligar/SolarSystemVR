@@ -25,6 +25,10 @@ public class DialogManager : MonoBehaviour
         DiaMoonThird,
         DiaMoonFourth,
         DiaMoonFifth,
+        DiaMoonDescription,
+        DiaMoonSea,
+        DiaMoonMountain,
+        DiaMoonCrater,
         DiaMoonLast,
 
         DiaSunStart,
@@ -108,6 +112,7 @@ public class DialogManager : MonoBehaviour
                     break;
                 case Dialogs.DiaMoonStart:
                     isDialogDone = false;
+                    moon.transform.GetChild(0).gameObject.SetActive(true);
                     director.Play();
                     break;
                 case Dialogs.DiaMoonRot:
@@ -134,8 +139,37 @@ public class DialogManager : MonoBehaviour
                     isDialogDone = false;
                     director.Play();
                     break;
+                case Dialogs.DiaMoonDescription:
+                    isDialogDone = false;
+                    logs = Dialogs.DiaMoonSea;
+                    moon.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.SetActive(false);
+                    moon.transform.GetChild(0).GetChild(0).GetChild(1).gameObject.SetActive(true);
+                    moon.transform.GetChild(0).GetChild(0).GetChild(1).GetChild(0).gameObject.SetActive(true);
+                    StartCoroutine(DisplayDialog());
+                    break;
+                case Dialogs.DiaMoonSea:
+                    isDialogDone = false;
+                    moon.transform.GetChild(0).GetChild(0).GetChild(1).GetChild(0).gameObject.SetActive(false);
+                    moon.transform.GetChild(0).GetChild(0).GetChild(1).GetChild(1).gameObject.SetActive(true);
+                    logs = Dialogs.DiaMoonMountain;
+                    StartCoroutine(DisplayDialog());
+                    break;
+                case Dialogs.DiaMoonMountain:
+                    isDialogDone = false;
+                    moon.transform.GetChild(0).GetChild(0).GetChild(1).GetChild(1).gameObject.SetActive(false);
+                    moon.transform.GetChild(0).GetChild(0).GetChild(1).GetChild(2).gameObject.SetActive(true);
+                    logs = Dialogs.DiaMoonCrater;
+                    StartCoroutine(DisplayDialog());
+                    break;
+                case Dialogs.DiaMoonCrater:
+                    isDialogDone = false;
+                    moon.transform.GetChild(0).GetChild(0).GetChild(1).GetChild(2).gameObject.SetActive(false);
+                    moon.transform.GetChild(0).GetChild(0).GetChild(1).gameObject.SetActive(false);
+                    director.Play();
+                    break;
                 case Dialogs.DiaMoonLast:
                     isDialogDone = false;
+                    moon.transform.GetChild(0).gameObject.SetActive(false);
                     backtoPlanets.SetActive(true);
                     break;
                 case Dialogs.DiaSunStart:
@@ -161,7 +195,7 @@ public class DialogManager : MonoBehaviour
     {
         shownText.text = "";
         string currentText = "";
-        yield return new WaitForSeconds(0f);
+        yield return new WaitForSeconds(1f - 1f);
         dialogPanel.SetActive(true);
         switch (logs)
         {
@@ -258,6 +292,30 @@ public class DialogManager : MonoBehaviour
                     "그믐달 대사 (DiaMoonFifth)"
                 };
                 break;
+            case Dialogs.DiaMoonDescription:
+                dialog = new string[]
+                {
+                    "달 설명 시작 (DiaMoonDescription)"
+                };
+                break;
+            case Dialogs.DiaMoonSea:
+                dialog = new string[]
+                {
+                    "달 바다 설명 (DiaMoonSea)"
+                };
+                break;
+            case Dialogs.DiaMoonMountain:
+                dialog = new string[]
+                {
+                    "달 고지 설명 (DiaMoonMountain)"
+                };
+                break;
+            case Dialogs.DiaMoonCrater:
+                dialog = new string[]
+                {
+                    "달 분화구 설명 (DiaMoonCrater)"
+                };
+                break;
             case Dialogs.DiaMoonLast:
                 dialog = new string[]
                 {
@@ -292,7 +350,7 @@ public class DialogManager : MonoBehaviour
             if (i == dialog[j].Length)
             {
 
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.1f - 0.9999f);
                 if (dialog.Length > j+1)
                 {
                     j += 1;
@@ -327,14 +385,14 @@ public class DialogManager : MonoBehaviour
         while(glassRenderer.a > 0f)
         {
             fadeFloat -= 0.005f;
-            glassRenderer = new Vector4(0f, 0f, 0f, fadeFloat);
+            glassRenderer = new Vector4(glassRenderer.r, glassRenderer.g, glassRenderer.b, fadeFloat);
             if(glassRenderer.a <= 0f)
             {
                 glassObject.SetActive(false);
             }
             yield return null;
         }
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(4f - 2f);
         for (int i = 0; i < respawns.Length; i++)
         {
             respawns[i].enabled = false;
@@ -350,7 +408,7 @@ public class DialogManager : MonoBehaviour
         earth.SetActive(true);
         earthBackground.SetActive(false);
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(5f - 5f);
         StartCoroutine("DisplayDialog");
     }
 
@@ -421,6 +479,13 @@ public class DialogManager : MonoBehaviour
         logs = Dialogs.DiaMoonFifth;
         StartCoroutine(DisplayDialog());
     }
+    public void MoonDescriptionSignal()
+    {
+        director.Pause();
+        logs = Dialogs.DiaMoonDescription;
+        StartCoroutine(DisplayDialog());
+    }
+
     public void MoonLastSignal()
     {
         director.Pause();

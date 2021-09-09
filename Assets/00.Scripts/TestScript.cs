@@ -2,14 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.UI;
 
 public class TestScript : MonoBehaviour
 {
-    public GameObject gameObject;
+    public DialogManager diaMan;
+    DialogManager.Dialogs logs;
 
+
+    
     public void TestButton()
     {
-        Debug.Log(gameObject);
+        print("aadfasdfsdfafadf");
+        diaMan.logs = DialogManager.Dialogs.DiaMoonStart;
+        diaMan.StartCoroutine("DisplayDialog");
     }
 
 }

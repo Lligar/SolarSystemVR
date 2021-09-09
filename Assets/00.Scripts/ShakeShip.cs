@@ -57,7 +57,7 @@ public class ShakeShip : MonoBehaviour
             //Check if we have reached the decreasePoint then start decreasing  decreaseSpeed value
             if (counter >= decreasePoint)
             {
-                Debug.Log("Decreasing shake");
+
 
                 //Reset counter to 0 
                 counter = 0f;
@@ -66,8 +66,6 @@ public class ShakeShip : MonoBehaviour
                     counter += Time.deltaTime;
                     decreaseSpeed = Mathf.Lerp(speed, 0, counter / decreasePoint);
                     decreaseAngle = Mathf.Lerp(angleRot, 0, counter / decreasePoint);
-
-                    Debug.Log("Decrease Value: " + decreaseSpeed);
 
                     //Shake GameObject
                     if (objectIs2D)
@@ -96,7 +94,6 @@ public class ShakeShip : MonoBehaviour
         objTransform.rotation = defaultRot;//Reset to original rotation
 
         shaking = false; //So that we can call this function next time
-        Debug.Log("Done!");
     }
 
 

@@ -30,8 +30,7 @@ public class MoveShip : MonoBehaviour
         {
             background.position += transform.forward * Time.deltaTime * speed;
             fadeFloat += 0.005f;
-            glassMat.material.color = new Vector4(0f, 0f, 0f, fadeFloat);
-            print(glassMat.material.color.a);
+            glassMat.material.color = new Vector4(glassMat.material.color.r, glassMat.material.color.g, glassMat.material.color.b, fadeFloat);
             if(glassMat.material.color.a >= 1f)
             {
                 diaManager.StartCoroutine("ArriveSpace");
