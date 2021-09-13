@@ -34,8 +34,11 @@ public class FadeScreen : MonoBehaviour
         }
         if(gameObject.tag == "BackToPlanets")
         {
+            director.Pause();
+            director.Stop();
             resetManager.ResetObjects();
-            if(earthCollider)
+            planetButtons.SetActive(true);
+            if (earthCollider)
             {
                 earthCollider.enabled = false;
             }    

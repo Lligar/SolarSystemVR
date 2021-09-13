@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class InitialPosRot : MonoBehaviour
 {
-    Vector3 initPos;
-    Quaternion initRot;
+    public Vector3 initPos;
+    public Quaternion initRot;
     void Start()
     {
         initPos = transform.position;

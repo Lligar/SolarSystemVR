@@ -47,6 +47,7 @@ public class DialogManager : MonoBehaviour
     public MarkerClick markerClick;
     public GameObject earth;
     public GameObject moon;
+    public Transform moonCanvas;
     public GameObject sun;
     public GameObject backtoPlanets;
     public GameObject fadeScreen;
@@ -112,7 +113,8 @@ public class DialogManager : MonoBehaviour
                     break;
                 case Dialogs.DiaMoonStart:
                     isDialogDone = false;
-                    moon.transform.GetChild(0).gameObject.SetActive(true);
+                    moonCanvas.GetComponent<Image>().enabled = true;
+                    moonCanvas.GetChild(0).gameObject.SetActive(true);
                     director.Play();
                     break;
                 case Dialogs.DiaMoonRot:
@@ -142,34 +144,30 @@ public class DialogManager : MonoBehaviour
                 case Dialogs.DiaMoonDescription:
                     isDialogDone = false;
                     logs = Dialogs.DiaMoonSea;
-                    moon.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.SetActive(false);
-                    moon.transform.GetChild(0).GetChild(0).GetChild(1).gameObject.SetActive(true);
-                    moon.transform.GetChild(0).GetChild(0).GetChild(1).GetChild(0).gameObject.SetActive(true);
-                    StartCoroutine(DisplayDialog());
-                    break;
-                case Dialogs.DiaMoonSea:
-                    isDialogDone = false;
-                    moon.transform.GetChild(0).GetChild(0).GetChild(1).GetChild(0).gameObject.SetActive(false);
-                    moon.transform.GetChild(0).GetChild(0).GetChild(1).GetChild(1).gameObject.SetActive(true);
-                    logs = Dialogs.DiaMoonMountain;
-                    StartCoroutine(DisplayDialog());
+                    director.Play();
                     break;
                 case Dialogs.DiaMoonMountain:
                     isDialogDone = false;
-                    moon.transform.GetChild(0).GetChild(0).GetChild(1).GetChild(1).gameObject.SetActive(false);
-                    moon.transform.GetChild(0).GetChild(0).GetChild(1).GetChild(2).gameObject.SetActive(true);
-                    logs = Dialogs.DiaMoonCrater;
-                    StartCoroutine(DisplayDialog());
+                    moonCanvas.GetChild(1).GetChild(0).gameObject.SetActive(false);
+                    moonCanvas.GetComponent<Image>().enabled = false;
+                    director.Play();
+                    break;
+                case Dialogs.DiaMoonSea:
+                    isDialogDone = false;
+                    moonCanvas.GetChild(1).GetChild(1).gameObject.SetActive(false);
+                    moonCanvas.GetComponent<Image>().enabled = false;
+                    director.Play();
                     break;
                 case Dialogs.DiaMoonCrater:
                     isDialogDone = false;
-                    moon.transform.GetChild(0).GetChild(0).GetChild(1).GetChild(2).gameObject.SetActive(false);
-                    moon.transform.GetChild(0).GetChild(0).GetChild(1).gameObject.SetActive(false);
+                    moonCanvas.GetChild(1).GetChild(2).gameObject.SetActive(false);
+                    moonCanvas.GetComponent<Image>().enabled = false;
                     director.Play();
                     break;
                 case Dialogs.DiaMoonLast:
                     isDialogDone = false;
-                    moon.transform.GetChild(0).gameObject.SetActive(false);
+                    moonCanvas.GetComponent<Image>().enabled = false;
+                    earth.GetComponent<SphereCollider>().enabled = false;
                     backtoPlanets.SetActive(true);
                     break;
                 case Dialogs.DiaSunStart:
@@ -483,6 +481,34 @@ public class DialogManager : MonoBehaviour
     {
         director.Pause();
         logs = Dialogs.DiaMoonDescription;
+        moonCanvas.GetChild(0).gameObject.SetActive(false);
+        moonCanvas.GetComponent<Image>().enabled = false;
+        StartCoroutine(DisplayDialog());
+    }
+    public void MoonMountainSignal()
+    {
+        director.Pause();
+        moonCanvas.GetComponent<Image>().enabled = true;
+        moonCanvas.GetChild(1).GetChild(0).gameObject.SetActive(true);
+        logs = Dialogs.DiaMoonMountain;
+        StartCoroutine(DisplayDialog());
+    }
+
+    public void MoonSeaSignal()
+    {
+        director.Pause();
+        moonCanvas.GetComponent<Image>().enabled = true;
+        moonCanvas.GetChild(1).GetChild(1).gameObject.SetActive(true);
+        logs = Dialogs.DiaMoonSea;
+        StartCoroutine(DisplayDialog());
+    }
+
+    public void MoonCraterSignal()
+    {
+        director.Pause();
+        moonCanvas.GetComponent<Image>().enabled = true;
+        moonCanvas.GetChild(1).GetChild(2).gameObject.SetActive(true);
+        logs = Dialogs.DiaMoonCrater;
         StartCoroutine(DisplayDialog());
     }
 
