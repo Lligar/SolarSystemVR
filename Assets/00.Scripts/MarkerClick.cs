@@ -19,6 +19,10 @@ public class MarkerClick : MonoBehaviour
             dialogManager.logs = DialogManager.Dialogs.DiaCorrectMarker;
             dialogManager.StartCoroutine("DisplayDialog");
         }
+        else if (gameObject.name == "MoonMarker")
+        {
+            dialogManager.MoonMarkerClick();
+        }
         else
         {
             transform.GetChild(0).gameObject.SetActive(true);
