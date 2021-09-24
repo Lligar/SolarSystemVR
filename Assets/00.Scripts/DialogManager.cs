@@ -17,6 +17,13 @@ public class DialogManager : MonoBehaviour
         DiaEarthMarker,
         DiaWrongMarker,
         DiaCorrectMarker,
+        DiaEarthMap,
+        DiaEarthContinent,
+        DiaEarthOcean,
+        DiaEarthFiveOcean,
+        DiaEarthFiveOceanTwo,
+        DiaEarthSevenContinents,
+        
 
         DiaMoonStart,
         DiaMoonRot,
@@ -55,6 +62,8 @@ public class DialogManager : MonoBehaviour
     public GameObject earthBackground;
     public ArrangePlanets arrangePlanets;
     public SpawnEffect[] respawns;
+    public GameObject[] continentObjects;
+    public GameObject[] continentTexts;
 
     bool isDialogDone;
     string[] dialog;
@@ -108,14 +117,94 @@ public class DialogManager : MonoBehaviour
                 case Dialogs.DiaCorrectMarker:
                     isDialogDone = false;
                     markerClick.ResetMarker();
+                    moonCanvas.GetComponent<RectTransform>().localPosition = new Vector3(920.1f, 286.8f, 383.4f);
+                    moonCanvas.GetComponent<RectTransform>().localEulerAngles = new Vector3(-6.629f, -102.047f, -5.666f);
+                    moonCanvas.GetComponent<Image>().enabled = true;
                     markerCanvas.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
                     markerCanvas.SetActive(false);
+                    moon.SetActive(false);
+                    continentObjects[0].SetActive(true);
+                    continentObjects[1].SetActive(true);
+                    continentObjects[2].SetActive(true);
+                    logs = Dialogs.DiaEarthMap;
+                    StartCoroutine("DisplayDialog");
+                    break;
+                case Dialogs.DiaEarthMap:
+                    isDialogDone = false;
+                    continentObjects[1].GetComponent<Blink>().enabled = true;
+                    logs = Dialogs.DiaEarthContinent;
+                    StartCoroutine("DisplayDialog");
+                    break;
+                case Dialogs.DiaEarthContinent:
+                    isDialogDone = false;
+                    continentObjects[1].GetComponent<Blink>().enabled = false;
+                    continentObjects[2].GetComponent<Blink>().enabled = true;
+                    logs = Dialogs.DiaEarthOcean;
+                    StartCoroutine("DisplayDialog");
+                    break;
+                case Dialogs.DiaEarthOcean:
+                    isDialogDone = false;
+                    continentObjects[2].GetComponent<Blink>().enabled = false;
+                    continentObjects[2].SetActive(false);
+                    for (int i = 0;i < 5; i ++)
+                    {
+                        continentTexts[i].SetActive(true);
+                    }
+                    continentTexts[0].transform.GetChild(0).GetComponent<Text>().text = "태평양";
+                    continentTexts[1].transform.GetChild(0).GetComponent<Text>().text = "북극해";
+                    continentTexts[2].transform.GetChild(0).GetComponent<Text>().text = "인도양";
+                    continentTexts[3].transform.GetChild(0).GetComponent<Text>().text = "대서양";
+                    continentTexts[4].transform.GetChild(0).GetComponent<Text>().text = "남극해";
+                    logs = Dialogs.DiaEarthFiveOcean;
+                    StartCoroutine("DisplayDialog");
+                    break;
+                case Dialogs.DiaEarthFiveOcean:
+                    isDialogDone = false;
+                    for (int i = 0; i < 5; i++)
+                    {
+                        continentTexts[i].SetActive(false);
+                    }
+                    continentObjects[3].SetActive(true);
+                    logs = Dialogs.DiaEarthFiveOceanTwo;
+                    StartCoroutine("DisplayDialog");
+                    break;
+                case Dialogs.DiaEarthFiveOceanTwo:
+                    isDialogDone = false;
+                    for (int i = 0; i < continentTexts.Length; i++)
+                    {
+                        continentTexts[i].SetActive(true);
+                    }
+                    continentObjects[3].SetActive(true);
+                    continentTexts[0].transform.GetChild(0).GetComponent<Text>().text = "아시아";
+                    continentTexts[1].transform.GetChild(0).GetComponent<Text>().text = "유럽";
+                    continentTexts[2].transform.GetChild(0).GetComponent<Text>().text = "아프리카";
+                    continentTexts[3].transform.GetChild(0).GetComponent<Text>().text = "북아메리카";
+                    continentTexts[4].transform.GetChild(0).GetComponent<Text>().text = "남극대륙";
+                    continentTexts[5].transform.GetChild(0).GetComponent<Text>().text = "오세아니아";
+                    continentTexts[6].transform.GetChild(0).GetComponent<Text>().text = "남아메리카";
+                    logs = Dialogs.DiaEarthSevenContinents;
+                    StartCoroutine("DisplayDialog");
+                    break;
+                case Dialogs.DiaEarthSevenContinents:
+                    isDialogDone = false;
+                    for (int i = 0; i < continentTexts.Length; i++)
+                    {
+                        continentTexts[i].SetActive(false);
+                    }
+                    for (int i = 0; i < continentObjects.Length; i ++)
+                    {
+                        continentObjects[i].SetActive(false);
+                    }
+                    moonCanvas.GetComponent<Image>().enabled = false;
                     director.Play();
                     break;
+
                 case Dialogs.DiaMoonStart:
                     isDialogDone = false;
-                    moonCanvas.GetComponent<Image>().enabled = true;
                     moonCanvas.GetChild(0).gameObject.SetActive(true);
+                    moonCanvas.GetComponent<Image>().enabled = true;
+                    moonCanvas.GetComponent<RectTransform>().localPosition = new Vector3(-1.87895f, -0.03247f, 3.18009f);
+                    moonCanvas.GetComponent<RectTransform>().localEulerAngles = new Vector3(-3.849f, 30.557f, 0f);
                     director.Play();
                     break;
                 case Dialogs.DiaMoonRot:
@@ -249,6 +338,44 @@ public class DialogManager : MonoBehaviour
                     "지구마커 정답 (DiaCorrectMarker)"
                 };
                 break;
+            case Dialogs.DiaEarthMap:
+                dialog = new string[]
+                {
+                    "지구지도 설명 시작 (DiaEarthMap)"
+                };
+                break;
+            case Dialogs.DiaEarthContinent:
+                dialog = new string[]
+                {
+                    "지구지도 대륙 설명 (DiaEarthContinent)"
+                };
+                break;
+            case Dialogs.DiaEarthOcean:
+                dialog = new string[]
+                {
+                    "지구지도 바다 설명 (DiaEarthOcean)"
+                };
+                break;
+            case Dialogs.DiaEarthFiveOcean:
+                dialog = new string[]
+                {
+                    "지구지도 5대양 설명 (DiaEarthFiveOcean)"
+                };
+                break;
+            case Dialogs.DiaEarthFiveOceanTwo:
+                dialog = new string[]
+                {
+                    "지구지도 5대양 설명 후 (DiaEarthFiveOceanTwo)"
+                };
+                break;
+            case Dialogs.DiaEarthSevenContinents:
+                dialog = new string[]
+                {
+                    "지구지도 7대륙 설명 (DiaEarthMap)"
+                };
+                break;
+
+
             case Dialogs.DiaMoonStart:
                 dialog = new string[]
                 {
@@ -426,7 +553,6 @@ public class DialogManager : MonoBehaviour
         director.Pause();
         logs = Dialogs.DiaEarthRot;
         earth.GetComponent<ObjectRotation>().enabled = true;
-        moon.SetActive(false);
         StartCoroutine(DisplayDialog());
     }
     public void EarthMarkerSignal()

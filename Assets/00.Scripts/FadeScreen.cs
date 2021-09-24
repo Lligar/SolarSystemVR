@@ -45,14 +45,11 @@ public class FadeScreen : MonoBehaviour
         }
         if(gameObject.tag == "SolarSystemFade")
         {
-            // 태양계외 객체 꺼
             foreach(GameObject objects in nonSolarSystem)
             {
                 objects.SetActive(false);
             }
-            // 태양계 객체 켜
             solarSystem.SetActive(true);
-            // Director.Play 로 카메라 조정 해
             director.Play();
         }
         if (gameObject.tag == "SolarSystemDone")

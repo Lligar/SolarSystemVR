@@ -6,16 +6,13 @@ using UnityEngine.UI;
 
 public class TestScript : MonoBehaviour
 {
-    public DialogManager diaMan;
-    DialogManager.Dialogs logs;
-
-
-    
-    public void TestButton()
+    float prev;
+    float current;
+    private void Update()
     {
-        print("aadfasdfsdfafadf");
-        diaMan.logs = DialogManager.Dialogs.DiaMoonStart;
-        diaMan.StartCoroutine("DisplayDialog");
+        prev = current;
+        current = transform.eulerAngles.y;
+        float velocity = (Mathf.Abs(prev) - Mathf.Abs(current) * Time.deltaTime);
+        print(velocity);
     }
-
 }
