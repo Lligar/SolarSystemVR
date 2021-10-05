@@ -67,6 +67,7 @@ public class DialogManager : MonoBehaviour
 
     bool isDialogDone;
     string[] dialog;
+    AudioClip[] clipDialog;
     float fadeFloat;
     int intI = 0;
 
@@ -294,6 +295,10 @@ public class DialogManager : MonoBehaviour
                     "곧 우주로 출발 할거야, 준비 됐어?",
                     "10... 9... 8... 7..."
                 };
+                clipDialog = new AudioClip[]
+                {
+
+                };
                 break;
             case Dialogs.DiaWarp:
                 dialog = new string[] {
@@ -329,7 +334,7 @@ public class DialogManager : MonoBehaviour
             case Dialogs.DiaEarthMarker:
                 dialog = new string[]
                 {
-                    "지구마커 대사 (DiaEarthRot)"
+                    "지구마커 대사 (DiaEarthMarker)"
                 };
                 break;
             case Dialogs.DiaCorrectMarker:
@@ -371,7 +376,7 @@ public class DialogManager : MonoBehaviour
             case Dialogs.DiaEarthSevenContinents:
                 dialog = new string[]
                 {
-                    "지구지도 7대륙 설명 (DiaEarthMap)"
+                    "지구지도 7대륙 설명 (DiaEarthSevenContinents)"
                 };
                 break;
 
@@ -385,7 +390,7 @@ public class DialogManager : MonoBehaviour
             case Dialogs.DiaMoonRot:
                 dialog = new string[]
                 {
-                    "달 회전 후 대사 (DiaMoonStart)"
+                    "달 회전 후 대사 (DiaMoonRot)"
                 };
                 break;
             case Dialogs.DiaMoonFirst:
@@ -466,7 +471,7 @@ public class DialogManager : MonoBehaviour
                     "태양계 줌인 대사 (DiaOrbitZoom) + 태양계 행성들 설명 대사"
                 };
                 break;
-        }                        
+        }
 
         int j = 0;
         for (int i = 0; i <= dialog[j].Length; i++)
@@ -476,7 +481,7 @@ public class DialogManager : MonoBehaviour
             if (i == dialog[j].Length)
             {
 
-                yield return new WaitForSeconds(0.1f - 0.9999f);
+                yield return new WaitForSeconds(2f - 0f);
                 if (dialog.Length > j+1)
                 {
                     j += 1;
@@ -484,13 +489,13 @@ public class DialogManager : MonoBehaviour
                 }
                 else
                 {
-                    yield return new WaitForSeconds(2f - 2f);
+                    yield return new WaitForSeconds(2f - 0f);
                     dialogPanel.SetActive(false);
                     isDialogDone = true;
                     StopAllCoroutines();
                 }
             }
-            yield return new WaitForSeconds(0.005f);
+            yield return new WaitForSeconds(0.01f);
         }
     }
 
