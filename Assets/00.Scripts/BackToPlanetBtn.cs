@@ -12,10 +12,4 @@ public class BackToPlanetBtn : MonoBehaviour
         fadeManager.GetComponent<FadeScreen>().buttonClicked = true;
         gameObject.SetActive(false);
     }
-
-    private void LateUpdate()
-    {
-        print(transform.position);
-        print(transform.eulerAngles);
-    }
 }

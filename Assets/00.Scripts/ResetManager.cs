@@ -25,7 +25,6 @@ public class ResetManager : MonoBehaviour
             {
                 initObjects[i].gameObject.SetActive(true);
             }
-            print(initObjects[i].gameObject + " + " + initObjects[i].initPos + " + " + initObjects[i].initRot);
             initObjects[i].ResetPosRot();
             
         }

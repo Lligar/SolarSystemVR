@@ -13,6 +13,5 @@ public class TestScript : MonoBehaviour
         prev = current;
         current = transform.eulerAngles.y;
         float velocity = (Mathf.Abs(prev) - Mathf.Abs(current) * Time.deltaTime);
-        print(velocity);
     }
 }
