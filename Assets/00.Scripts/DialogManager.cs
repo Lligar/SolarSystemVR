@@ -262,7 +262,6 @@ public class DialogManager : MonoBehaviour
                 case Dialogs.DiaMoonLast:
                     isDialogDone = false;
                     moonCanvas.GetComponent<Image>().enabled = false;
-                    earth.GetComponent<SphereCollider>().enabled = false;
                     backtoPlanets.SetActive(true);
                     break;
                 case Dialogs.DiaSunStart:

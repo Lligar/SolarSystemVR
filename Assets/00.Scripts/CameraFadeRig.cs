@@ -10,6 +10,7 @@ public class CameraFadeRig : MonoBehaviour
     public PlayableDirector director;
     public bool buttonClicked;
     public Image fadeImage;
+    public GameObject sun;
 
     float fadeAlpha;
     bool fadeOut;
@@ -48,6 +49,10 @@ public class CameraFadeRig : MonoBehaviour
 
     void FadeAction()
     {
+        if(director.playableAsset.name == "EarthTimeline")
+        {
+            sun.SetActive(false);
+        }
         director.Play();
     }
 

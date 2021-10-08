@@ -16,7 +16,7 @@ public class PlanetButton : MonoBehaviour
     {
         camFade.buttonClicked = true;
         director.playableAsset = playableAsset;
-        if (gameObject.name == "PanelMoon")
+        if (gameObject.name == "PanelMoon" || gameObject.name == "PanelEarth")
         {
             lightRig.transform.GetChild(0).gameObject.SetActive(true);
             lightRig.transform.GetChild(1).gameObject.SetActive(false);

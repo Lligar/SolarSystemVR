@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MarkerClick : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class MarkerClick : MonoBehaviour
             for (int i = 0; i < markerCanvas.transform.childCount; i++)
             {
                 markerCanvas.GetChild(i).GetComponent<BoxCollider>().enabled = false;
+                markerCanvas.GetChild(i).GetComponent<Image>().enabled = false;
             }
             dialogManager.logs = DialogManager.Dialogs.DiaCorrectMarker;
             dialogManager.StartCoroutine("DisplayDialog");
@@ -29,6 +31,7 @@ public class MarkerClick : MonoBehaviour
             for (int i = 0; i < markerCanvas.transform.childCount; i++)
             {
                 markerCanvas.GetChild(i).GetComponent<BoxCollider>().enabled = false;
+                markerCanvas.GetChild(i).GetComponent<Image>().enabled = false;
             }
             dialogManager.logs = DialogManager.Dialogs.DiaWrongMarker;
             dialogManager.StartCoroutine("DisplayDialog");
@@ -40,6 +43,7 @@ public class MarkerClick : MonoBehaviour
         for (int i = 0;i < markerCanvas.transform.childCount;i++)
         {
             markerCanvas.GetChild(i).GetComponent<BoxCollider>().enabled = true;
+            markerCanvas.GetChild(i).GetComponent<Image>().enabled = true;
             markerCanvas.GetChild(i).transform.GetChild(0).gameObject.SetActive(false);
         }
     }

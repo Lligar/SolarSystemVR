@@ -665,6 +665,7 @@ MonoBehaviour:
   buttonClicked: 0
   earthCollider: {fileID: 135244012070236983}
   planetButtons: {fileID: 748941976}
+  sun: {fileID: 4239275977095099773}
   nonSolarSystem:
   - {fileID: 4239275977095099773}
   - {fileID: 812728248}
@@ -1731,6 +1732,7 @@ GameObject:
   m_Component:
   - component: {fileID: 383729581}
   - component: {fileID: 383729580}
+  - component: {fileID: 383729582}
   m_Layer: 0
   m_Name: FlaredLight
   m_TagString: Untagged
@@ -1813,6 +1815,20 @@ Transform:
   m_Father: {fileID: 812728249}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &383729582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383729579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bbef7a3b5cfca243bf9c44e4b292849, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sunFlare: {fileID: 12100000, guid: eb7f2fdf6cf18496a8300de97efb5eac, type: 2}
+  fadeImage: {fileID: 1388939536570702246}
 --- !u!1 &433973920
 GameObject:
   m_ObjectHideFlags: 0
@@ -2411,6 +2427,7 @@ MonoBehaviour:
   director: {fileID: 1244373400}
   buttonClicked: 0
   fadeImage: {fileID: 1388939536570702246}
+  sun: {fileID: 4239275977095099773}
 --- !u!4 &550517097
 Transform:
   m_ObjectHideFlags: 0
@@ -5155,7 +5172,7 @@ PlayableDirector:
   m_GameObject: {fileID: 1244373399}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: dfc111b855b67cd4c8006646c7d08d12, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: 44b50078ecec7fc4aa02f3d0c011d98c, type: 2}
   m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
@@ -7926,7 +7943,7 @@ MonoBehaviour:
   camFade: {fileID: 550517096}
   director: {fileID: 1244373400}
   playableAsset: {fileID: 11400000, guid: dfc111b855b67cd4c8006646c7d08d12, type: 2}
-  lightRig: {fileID: 0}
+  lightRig: {fileID: 812728248}
   fadeImage: {fileID: 1388939536570702246}
 --- !u!114 &1945684467
 MonoBehaviour:

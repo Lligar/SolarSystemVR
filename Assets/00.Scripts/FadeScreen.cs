@@ -13,6 +13,7 @@ public class FadeScreen : MonoBehaviour
     public bool buttonClicked;
     public SphereCollider earthCollider;
     public GameObject planetButtons;
+    public GameObject sun;
 
     public GameObject[] nonSolarSystem;
     public GameObject solarSystem;
@@ -41,7 +42,11 @@ public class FadeScreen : MonoBehaviour
             if (earthCollider)
             {
                 earthCollider.enabled = false;
-            }    
+            }
+            if (!sun.activeInHierarchy)
+            {
+                sun.SetActive(true);
+            }
         }
         if(gameObject.tag == "SolarSystemFade")
         {
