@@ -7,14 +7,15 @@ using UnityEngine.UI;
 
 public class PlanetButton : MonoBehaviour
 {
+    public CameraFadeRig camFade;
     public PlayableDirector director;
     public PlayableAsset playableAsset;
     public GameObject lightRig;
     public Image fadeImage;
     void GazeClick()
     {
+        camFade.buttonClicked = true;
         director.playableAsset = playableAsset;
-        director.Play();
         if (gameObject.name == "PanelMoon")
         {
             lightRig.transform.GetChild(0).gameObject.SetActive(true);
@@ -23,10 +24,15 @@ public class PlanetButton : MonoBehaviour
     }
     void Update()
     {
-        print(fadeImage.color.a);
         if (fadeImage.color.a > 0f)
         {
             GetComponent<BoxCollider>().enabled = false;
+            transform.parent.GetComponent<GraphicRaycaster>().enabled = false;
+        }
+        else
+        {
+            GetComponent<BoxCollider>().enabled = true;
+            transform.parent.GetComponent<GraphicRaycaster>().enabled = true;
         }
     }
 }

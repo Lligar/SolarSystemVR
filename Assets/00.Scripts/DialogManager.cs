@@ -64,6 +64,7 @@ public class DialogManager : MonoBehaviour
     public SpawnEffect[] respawns;
     public GameObject[] continentObjects;
     public GameObject[] continentTexts;
+    public CameraFadeRig camFade;
 
     bool isDialogDone;
     string[] dialog;
@@ -101,7 +102,7 @@ public class DialogManager : MonoBehaviour
                     break;
                 case Dialogs.DiaEarthMoonSize:
                     isDialogDone = false;
-                    director.Play();
+                    camFade.buttonClicked = true;
                     break;
                 case Dialogs.DiaEarthRot:
                     isDialogDone = false;
@@ -197,7 +198,7 @@ public class DialogManager : MonoBehaviour
                         continentObjects[i].SetActive(false);
                     }
                     moonCanvas.GetComponent<Image>().enabled = false;
-                    director.Play();
+                    camFade.buttonClicked = true;
                     break;
 
                 case Dialogs.DiaMoonStart:
@@ -483,7 +484,7 @@ public class DialogManager : MonoBehaviour
             if (i == dialog[j].Length)
             {
 
-                yield return new WaitForSeconds(2f - 0f);
+                yield return new WaitForSeconds(2f - 2f);
                 if (dialog.Length > j+1)
                 {
                     j += 1;
@@ -491,7 +492,7 @@ public class DialogManager : MonoBehaviour
                 }
                 else
                 {
-                    yield return new WaitForSeconds(2f - 0f);
+                    yield return new WaitForSeconds(2f - 2f);
                     dialogPanel.SetActive(false);
                     isDialogDone = true;
                     StopAllCoroutines();
