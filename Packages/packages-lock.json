@@ -33,13 +33,6 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-    "com.unity.google.resonance.audio": {
-      "version": "2.0.0",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
     "com.unity.ide.rider": {
       "version": "1.1.4",
       "depth": 0,
@@ -66,6 +59,13 @@
     "com.unity.progrids": {
       "version": "3.0.3-preview.4",
       "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.subsystemregistration": {
+      "version": "1.0.6",
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -106,13 +106,34 @@
         "com.unity.modules.imgui": "1.0.0"
       }
     },
-    "com.unity.xr.googlevr.android": {
-      "version": "2.0.0",
+    "com.unity.xr.legacyinputhelpers": {
+      "version": "2.1.7",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.vr": "1.0.0",
+        "com.unity.modules.xr": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.xr.management": {
+      "version": "4.1.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.google.resonance.audio": "2.0.0"
+        "com.unity.modules.subsystems": "1.0.0",
+        "com.unity.modules.vr": "1.0.0",
+        "com.unity.modules.xr": "1.0.0",
+        "com.unity.xr.legacyinputhelpers": "2.1.7",
+        "com.unity.subsystemregistration": "1.0.6"
       },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.xr.oculus.android": {
+      "version": "2.38.6",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.modules.ai": {
