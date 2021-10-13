@@ -119,8 +119,8 @@ public class DialogManager : MonoBehaviour
                 case Dialogs.DiaCorrectMarker:
                     isDialogDone = false;
                     markerClick.ResetMarker();
-                    moonCanvas.parent.GetComponent<RectTransform>().localPosition = new Vector3(0.507f, 0.66f, 2.751f);
-                    moonCanvas.parent.GetComponent<RectTransform>().localEulerAngles = new Vector3(23.75f, 295.002f, -0.048f);
+                    // moonCanvas.parent.GetComponent<RectTransform>().localPosition = new Vector3(0.507f, 0.66f, 2.751f);
+                    // moonCanvas.parent.GetComponent<RectTransform>().localEulerAngles = new Vector3(23.75f, 295.002f, -0.048f);
                     moonCanvas.GetComponent<Image>().enabled = true;
                     markerCanvas.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
                     markerCanvas.SetActive(false);
@@ -205,9 +205,9 @@ public class DialogManager : MonoBehaviour
                     isDialogDone = false;
                     moonCanvas.GetChild(0).gameObject.SetActive(true);
                     moonCanvas.GetComponent<Image>().enabled = true;
-                    moonCanvas.parent.GetComponent<RectTransform>().localPosition = new Vector3(-1.879044f, -0.03194988f, 3.180104f);
+                    //moonCanvas.parent.GetComponent<RectTransform>().localPosition = new Vector3(-1.879044f, -0.03194988f, 3.180104f);
                     // moonCanvas.GetComponent<RectTransform>().localPosition = new Vector3(-1.87895f, -0.03247f, 3.18009f);
-                    moonCanvas.parent.GetComponent<RectTransform>().localEulerAngles = new Vector3(-5f, 50f, 5f);
+                    //moonCanvas.parent.GetComponent<RectTransform>().localEulerAngles = new Vector3(-5f, 50f, 5f);
                     // moonCanvas.GetComponent<RectTransform>().localEulerAngles = new Vector3(-3.849f, 30.557f, 0f);
                     // -147.9001, 40.90001, 82.8 ,40
                     director.Play();

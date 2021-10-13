@@ -61,7 +61,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1.13
-    - _Contrast: 16
+    - _Contrast: 5
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -72,7 +72,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
-    - _Range: 9
+    - _Range: 200
     - _Shininess: 1
     - _SpotAngle: 160
     - _SrcBlend: 1
