@@ -12,7 +12,7 @@ public class GazeCircle : MonoBehaviour
     bool gvrStatus;
     float gvrTimer;
 
-    public int distanceOfRay = 10;
+    public int distanceOfRay = 100;
     private RaycastHit _hit;
 
     void Update()

@@ -176,6 +176,8 @@ public class DialogManager : MonoBehaviour
                     {
                         continentTexts[i].SetActive(true);
                     }
+                    continentObjects[0].SetActive(false);
+                    continentObjects[1].SetActive(false);
                     continentObjects[3].SetActive(true);
                     continentTexts[0].transform.GetChild(0).GetComponent<Text>().text = "아시아";
                     continentTexts[1].transform.GetChild(0).GetComponent<Text>().text = "유럽";
@@ -483,7 +485,7 @@ public class DialogManager : MonoBehaviour
             if (i == dialog[j].Length)
             {
 
-                yield return new WaitForSeconds(2f - 2f);
+                yield return new WaitForSeconds(2f - 0f);
                 if (dialog.Length > j+1)
                 {
                     j += 1;
@@ -491,7 +493,7 @@ public class DialogManager : MonoBehaviour
                 }
                 else
                 {
-                    yield return new WaitForSeconds(2f - 2f);
+                    yield return new WaitForSeconds(2f - 0f);
                     dialogPanel.SetActive(false);
                     isDialogDone = true;
                     StopAllCoroutines();

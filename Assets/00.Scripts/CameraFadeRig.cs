@@ -49,7 +49,7 @@ public class CameraFadeRig : MonoBehaviour
 
     void FadeAction()
     {
-        if(director.playableAsset.name == "EarthTimeline")
+        if(director.playableAsset.name == "EarthTimeline" || director.playableAsset.name == "MoonTimeline")
         {
             sun.SetActive(false);
         }
