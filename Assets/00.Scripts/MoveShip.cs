@@ -8,7 +8,7 @@ public class MoveShip : MonoBehaviour
     public MeshRenderer glassMat;
     public Transform background;
     public DialogManager diaManager;
-    public float fadeFloat = 0.9f;
+    public float fadeFloat;// = 0.9f;
     public GameObject respawn;
 
     void Start()

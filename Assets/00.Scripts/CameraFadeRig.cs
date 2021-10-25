@@ -11,6 +11,7 @@ public class CameraFadeRig : MonoBehaviour
     public bool buttonClicked;
     public Image fadeImage;
     public GameObject sun;
+    public GameObject earthAndMoon;
 
     float fadeAlpha;
     bool fadeOut;
@@ -52,6 +53,10 @@ public class CameraFadeRig : MonoBehaviour
         if(director.playableAsset.name == "EarthTimeline" || director.playableAsset.name == "MoonTimeline")
         {
             sun.SetActive(false);
+        }
+        if(director.playableAsset.name == "SunTimeline")
+        {
+            earthAndMoon.SetActive(false);
         }
         director.Play();
     }
